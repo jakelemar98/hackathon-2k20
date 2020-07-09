@@ -11,10 +11,10 @@ RUN go get golang.org/x/net/context
 RUN go get google.golang.org/grpc
 RUN go get go.mongodb.org/mongo-driver/bson
 
-RUN go build -o stocks
+RUN go build -o users
 
 EXPOSE 8000
 
-ENTRYPOINT ["./stocks"]
+ENTRYPOINT ["./users"]
 
 
