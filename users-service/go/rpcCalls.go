@@ -15,8 +15,8 @@ func (s *server) GetUserData(c context.Context, req *pb.UserRequest) (*pb.UserRe
 	return response, nil
 }
 
-func (s *server) getRoute(c context.Context, req *pb.UserRequest) (*pb.UserResponse, error) {
-	res := "Route"
+func (s *server) GetRoute(c context.Context, req *pb.UserRequest) (*pb.UserResponse, error) {
+	res := getRoute("41.592723,-93.614591")
 	response := &pb.UserResponse{
 		Body:   res,
 		Status: 200,
