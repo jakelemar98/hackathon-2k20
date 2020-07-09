@@ -10,6 +10,8 @@ import (
 
 var (
 	port = flag.String("port", "8000", "port")
+	apiBase = "https://roads.googleapis.com/v1/snapToRoads?path="
+	apiKey = "AIzaSyBEQgCxiGwGNRNiEp8PRcnxHVkKRq7Igmo"
 )
 
 func init() {

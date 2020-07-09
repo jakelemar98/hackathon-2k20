@@ -14,3 +14,12 @@ func (s *server) GetUserData(c context.Context, req *pb.UserRequest) (*pb.UserRe
 	}
 	return response, nil
 }
+
+func (s *server) getRoute(c context.Context, req *pb.UserRequest) (*pb.UserResponse, error) {
+	res := "Route"
+	response := &pb.UserResponse{
+		Body:   res,
+		Status: 200,
+	}
+	return response, nil
+}
