@@ -30,7 +30,7 @@ export class UserService {
     return this.http.get(this.gatewayURL + 'statistics').pipe(catchError(UserService.handleError));
   }
 
-  getUserTripData() {
+  getUserRoute() {
     return this.http.get(this.gatewayURL + 'trip').pipe(catchError(UserService.handleError));
   }
 }
