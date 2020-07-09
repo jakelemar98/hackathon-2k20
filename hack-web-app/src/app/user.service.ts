@@ -11,10 +11,11 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
-  gatewayURL = 'http://34.72.224.58/users/';
+  gatewayURL = 'http://localhost:8080/users/';
 
   getUserStatistics() {
-    return this.http.get(this.gatewayURL + 'statistics').pipe(catchError(UserService.handleError));
+    return this.http.get(this.gatewayURL + 'statistics')
+    // .pipe(catchError(UserService.handleError));
   }
 
   private static handleError(error: HttpErrorResponse) {
