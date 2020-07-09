@@ -14,14 +14,27 @@ public class UsersClient {
     private UserResponse response;
 
     public UserResponse userData() {
-
-        final ManagedChannel channel = ManagedChannelBuilder.forAddress("127.0.0.1", 8000).usePlaintext().build();
+        String url = "users-service";
+        final ManagedChannel channel = ManagedChannelBuilder.forAddress(url, 8000).usePlaintext().build();
         final UserServiceGrpc.UserServiceBlockingStub stub = UserServiceGrpc.newBlockingStub(channel);
     
         response = stub.getUserData(UserRequest.newBuilder()
             .setBody("hey")
             .build());
-        
+        System.out.println("shutting down");
+        channel.shutdown();
+        return response;
+    }
+
+    public UserResponse getRoute() {
+        String url = "users-service";
+        final ManagedChannel channel = ManagedChannelBuilder.forAddress(url, 8000).usePlaintext().build();
+        final UserServiceGrpc.UserServiceBlockingStub stub = UserServiceGrpc.newBlockingStub(channel);
+    
+        response = stub.getRoute(UserRequest.newBuilder()
+            .setBody("hey")
+            .build());
+        System.out.println("shutting down");
         channel.shutdown();
         return response;
     }

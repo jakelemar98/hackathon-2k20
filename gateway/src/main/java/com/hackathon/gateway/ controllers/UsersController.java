@@ -20,9 +20,17 @@ public class UsersController {
 	UsersClient uc = new UsersClient();
 
 
-	@GetMapping("/users/statistics")
+	@GetMapping("/users/stats")
 	public ResponseEntity<String> getStatistics() {
 		UserResponse messageResponse = uc.userData();
+		String jsonString = serializeReturn(messageResponse);
+        return new ResponseEntity<>(jsonString, HttpStatus.OK);
+	}
+
+
+	@GetMapping("/users/route")
+	public ResponseEntity<String> getRoute() {
+		UserResponse messageResponse = uc.getRoute();
 		String jsonString = serializeReturn(messageResponse);
         return new ResponseEntity<>(jsonString, HttpStatus.OK);
 	}

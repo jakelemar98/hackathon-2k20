@@ -59,6 +59,38 @@ public final class UserServiceGrpc {
      return getGetUserDataMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<com.grpc.services.users.UserRequest,
+      com.grpc.services.users.UserResponse> getGetRouteMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "GetRoute",
+      requestType = com.grpc.services.users.UserRequest.class,
+      responseType = com.grpc.services.users.UserResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<com.grpc.services.users.UserRequest,
+      com.grpc.services.users.UserResponse> getGetRouteMethod() {
+    io.grpc.MethodDescriptor<com.grpc.services.users.UserRequest, com.grpc.services.users.UserResponse> getGetRouteMethod;
+    if ((getGetRouteMethod = UserServiceGrpc.getGetRouteMethod) == null) {
+      synchronized (UserServiceGrpc.class) {
+        if ((getGetRouteMethod = UserServiceGrpc.getGetRouteMethod) == null) {
+          UserServiceGrpc.getGetRouteMethod = getGetRouteMethod = 
+              io.grpc.MethodDescriptor.<com.grpc.services.users.UserRequest, com.grpc.services.users.UserResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(
+                  "UserService", "GetRoute"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.grpc.services.users.UserRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.grpc.services.users.UserResponse.getDefaultInstance()))
+                  .setSchemaDescriptor(new UserServiceMethodDescriptorSupplier("GetRoute"))
+                  .build();
+          }
+        }
+     }
+     return getGetRouteMethod;
+  }
+
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -93,6 +125,13 @@ public final class UserServiceGrpc {
       asyncUnimplementedUnaryCall(getGetUserDataMethod(), responseObserver);
     }
 
+    /**
+     */
+    public void getRoute(com.grpc.services.users.UserRequest request,
+        io.grpc.stub.StreamObserver<com.grpc.services.users.UserResponse> responseObserver) {
+      asyncUnimplementedUnaryCall(getGetRouteMethod(), responseObserver);
+    }
+
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
@@ -102,6 +141,13 @@ public final class UserServiceGrpc {
                 com.grpc.services.users.UserRequest,
                 com.grpc.services.users.UserResponse>(
                   this, METHODID_GET_USER_DATA)))
+          .addMethod(
+            getGetRouteMethod(),
+            asyncUnaryCall(
+              new MethodHandlers<
+                com.grpc.services.users.UserRequest,
+                com.grpc.services.users.UserResponse>(
+                  this, METHODID_GET_ROUTE)))
           .build();
     }
   }
@@ -131,6 +177,14 @@ public final class UserServiceGrpc {
       asyncUnaryCall(
           getChannel().newCall(getGetUserDataMethod(), getCallOptions()), request, responseObserver);
     }
+
+    /**
+     */
+    public void getRoute(com.grpc.services.users.UserRequest request,
+        io.grpc.stub.StreamObserver<com.grpc.services.users.UserResponse> responseObserver) {
+      asyncUnaryCall(
+          getChannel().newCall(getGetRouteMethod(), getCallOptions()), request, responseObserver);
+    }
   }
 
   /**
@@ -156,6 +210,13 @@ public final class UserServiceGrpc {
     public com.grpc.services.users.UserResponse getUserData(com.grpc.services.users.UserRequest request) {
       return blockingUnaryCall(
           getChannel(), getGetUserDataMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public com.grpc.services.users.UserResponse getRoute(com.grpc.services.users.UserRequest request) {
+      return blockingUnaryCall(
+          getChannel(), getGetRouteMethod(), getCallOptions(), request);
     }
   }
 
@@ -184,9 +245,18 @@ public final class UserServiceGrpc {
       return futureUnaryCall(
           getChannel().newCall(getGetUserDataMethod(), getCallOptions()), request);
     }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<com.grpc.services.users.UserResponse> getRoute(
+        com.grpc.services.users.UserRequest request) {
+      return futureUnaryCall(
+          getChannel().newCall(getGetRouteMethod(), getCallOptions()), request);
+    }
   }
 
   private static final int METHODID_GET_USER_DATA = 0;
+  private static final int METHODID_GET_ROUTE = 1;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -207,6 +277,10 @@ public final class UserServiceGrpc {
       switch (methodId) {
         case METHODID_GET_USER_DATA:
           serviceImpl.getUserData((com.grpc.services.users.UserRequest) request,
+              (io.grpc.stub.StreamObserver<com.grpc.services.users.UserResponse>) responseObserver);
+          break;
+        case METHODID_GET_ROUTE:
+          serviceImpl.getRoute((com.grpc.services.users.UserRequest) request,
               (io.grpc.stub.StreamObserver<com.grpc.services.users.UserResponse>) responseObserver);
           break;
         default:
@@ -271,6 +345,7 @@ public final class UserServiceGrpc {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new UserServiceFileDescriptorSupplier())
               .addMethod(getGetUserDataMethod())
+              .addMethod(getGetRouteMethod())
               .build();
         }
       }

@@ -27,11 +27,11 @@ export class UserService {
   }
 
   getUserStatistics() {
-    return this.http.get(this.gatewayURL + 'statistics').pipe(catchError(UserService.handleError));
+    return this.http.get(this.gatewayURL + 'stats').pipe(catchError(UserService.handleError));
   }
 
   getUserRoute() {
-    return this.http.get(this.gatewayURL + 'trip').pipe(catchError(UserService.handleError));
+    return this.http.get(this.gatewayURL + 'route').pipe(catchError(UserService.handleError));
   }
 
   getCommute() {

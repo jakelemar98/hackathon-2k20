@@ -8,7 +8,7 @@ public class IndexController {
 
 	@RequestMapping("/")
 	public String index() {
-		return "Spring Boot is running!";
+		return "Spring Boot is awful!";
 	}
 
 }

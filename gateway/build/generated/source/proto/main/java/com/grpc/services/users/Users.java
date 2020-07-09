@@ -35,9 +35,10 @@ public final class Users {
     java.lang.String[] descriptorData = {
       "\n\013users.proto\"\033\n\013UserRequest\022\014\n\004body\030\001 \001" +
       "(\t\";\n\014UserResponse\022\014\n\004body\030\001 \001(\t\022\r\n\005toke" +
-      "n\030\002 \001(\t\022\016\n\006status\030\003 \001(\00529\n\013UserService\022*" +
+      "n\030\002 \001(\t\022\016\n\006status\030\003 \001(\0052b\n\013UserService\022*" +
       "\n\013GetUserData\022\014.UserRequest\032\r.UserRespon" +
-      "seB\033\n\027com.grpc.services.usersP\001b\006proto3"
+      "se\022\'\n\010GetRoute\022\014.UserRequest\032\r.UserRespo" +
+      "nseB\033\n\027com.grpc.services.usersP\001b\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
