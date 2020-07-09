@@ -16,12 +16,19 @@ export class GoogleMapsComponent implements OnInit {
     zoomControl: true,
     scrollwheel: true,
     disableDoubleClickZoom: false,
-    maxZoom: 18,
-    minZoom: 4,
+    maxZoom: 17,
+    minZoom: 10,
   };
+
+  position: google.maps.LatLngLiteral;
 
   ngOnInit(): void {
     this.center = {
+      lat: 41.5868,
+      lng: -93.6250,
+    };
+
+    this.position = {
       lat: 41.5868,
       lng: -93.6250,
     };

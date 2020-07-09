@@ -1,6 +1,14 @@
-<mat-card style="width: 50%">
-  <mat-card-content>
-    <google-map height="50rem" width="50rem" [zoom]="zoom" [center]="center" [options]="options"></google-map>
-  </mat-card-content>
-</mat-card>
+<google-map height="50rem" width="50rem" [zoom]="zoom" [center]="center" [options]="options">
+
+
+  <map-marker
+    [position]="position"
+    [label]="'Marker Label'"
+    [title]="'Maker Title'"
+    [options]=""
+  >
+  </map-marker>
+
+
+</google-map>
 
