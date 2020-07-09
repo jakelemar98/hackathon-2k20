@@ -12,8 +12,8 @@ env:
   GKE_EMAIL: ${{ secrets.GKE_EMAIL }}
   GITHUB_SHA: ${{ github.sha }}
   GKE_ZONE: us-central1
-  GKE_CLUSTER: stocks-cluster
-  IMAGE: api-gateway
+  GKE_CLUSTER: hackathon-cluster
+  IMAGE: gateway-hack
   REGISTRY_HOSTNAME: us.gcr.io
   DEPLOYMENT_NAME: gateway-pipeline
 jobs:
@@ -21,7 +21,7 @@ jobs:
     name: Setup, Build, Publish, and Deploy
     runs-on: ubuntu-latest
     env:
-      working-directory: ./api-gateway
+      working-directory: ./gateway
     steps:
 
     - name: Checkout
@@ -50,9 +50,9 @@ jobs:
       run: |
         docker push $REGISTRY_HOSTNAME/$GKE_PROJECT/$IMAGE:${GITHUB_SHA}
 
-    # Deploy the Docker image to the GKE cluster
-    - name: Deploy
-      run: |
-        gcloud container clusters get-credentials $GKE_CLUSTER --zone $GKE_ZONE --project $GKE_PROJECT
-        chmod +x ./scripts/ci-deploy.sh
-        ./scripts/ci-deploy.sh $GITHUB_SHA gateway values prod production redis
+    # # Deploy the Docker image to the GKE cluster
+    # - name: Deploy
+    #   run: |
+    #     gcloud container clusters get-credentials $GKE_CLUSTER --zone $GKE_ZONE --project $GKE_PROJECT
+    #     chmod +x ./scripts/ci-deploy.sh
+    #     ./scripts/ci-deploy.sh $GITHUB_SHA gateway values prod production redis
