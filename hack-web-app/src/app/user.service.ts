@@ -6,11 +6,16 @@ import {catchError} from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
+
 export class UserService {
 
   constructor(private http: HttpClient) { }
 
   gatewayURL = 'http://34.72.224.58/users/';
+
+  getUserStatistics() {
+    return this.http.get(this.gatewayURL + 'statistics').pipe(catchError(UserService.handleError));
+  }
 
   private static handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
@@ -24,9 +29,4 @@ export class UserService {
     // return an observable with a user-facing error message
     return throwError(`There seems to be a problem: ${error.error.body}`);
   }
-
-  getUserStatistics(): Observable<any> {
-    return this.http.get(this.gatewayURL + 'statistics').pipe(catchError(UserService.handleError));
-  }
-
 }

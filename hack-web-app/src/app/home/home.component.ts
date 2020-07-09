@@ -10,7 +10,7 @@ export class HomeComponent implements OnInit {
 
   constructor(private users: UserService) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void {    
     this.users.getUserStatistics().subscribe(
       data => console.log(data),
       error => console.error(error)
