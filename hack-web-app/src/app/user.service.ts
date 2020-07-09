@@ -11,7 +11,7 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
-  gatewayURL = 'http://localhost:8080/users/';
+  gatewayURL = 'http://34.72.224.58/users/';
 
   private static handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
