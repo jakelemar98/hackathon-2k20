@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { GoogleMapsComponent } from '../google-maps/google-maps.component';
+import {UserService} from '../user.service';
 
 @Component({
   selector: 'app-home',
@@ -8,9 +8,13 @@ import { GoogleMapsComponent } from '../google-maps/google-maps.component';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(private users: UserService) { }
 
   ngOnInit(): void {
+    this.users.getUserStatistics().subscribe(
+      data => console.log(data),
+      error => console.error(error)
+    );
   }
 
 }
