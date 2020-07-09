@@ -1,0 +1,26 @@
+<script src="node_modules/chart.js/src/chart.js"></script>
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title>
+        History
+    </ion-title>
+  </ion-toolbar>
+    
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card>
+    <div>
+      <div style="display: block; padding: 15px;">
+        <canvas baseChart
+                [datasets]="barChartData"
+                [labels]="barChartLabels"
+                [options]="barChartOptions"
+                [legend]="barChartLegend"
+                [chartType]="barChartType">
+        </canvas>
+      </div>
+    </div>
+  </ion-card>
+ 
+</ion-content>
