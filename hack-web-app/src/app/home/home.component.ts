@@ -16,6 +16,13 @@ export class HomeComponent implements OnInit {
     this.users.getUserStatistics().subscribe(
       data => {
         console.log(data);
+      },
+      error => console.error(error)
+    );
+
+    this.users.getUserRoute().subscribe(
+      data => {
+        console.log(data);
 
         const latLng = {
           lat: 41.5868,
@@ -27,11 +34,6 @@ export class HomeComponent implements OnInit {
           title: 'Marker'
         }));
       },
-      error => console.error(error)
-    );
-
-    this.users.getUserTripData().subscribe(
-      data => console.log(data),
       error => console.error(error)
     );
   }
