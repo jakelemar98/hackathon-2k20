@@ -12,6 +12,7 @@ option java_package = 'com.grpc.services.users';
 
 service UserService {
     rpc GetUserData(UserRequest) returns (UserResponse);
+    rpc GetRoute(UserRequest) returns (UserResponse);
 }
 
 message UserRequest {

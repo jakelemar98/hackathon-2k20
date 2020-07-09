@@ -25,4 +25,17 @@ public class UsersClient {
         channel.shutdown();
         return response;
     }
+
+    public UserResponse getRoute() {
+        String url = "users-service";
+        final ManagedChannel channel = ManagedChannelBuilder.forAddress(url, 8000).usePlaintext().build();
+        final UserServiceGrpc.UserServiceBlockingStub stub = UserServiceGrpc.newBlockingStub(channel);
+    
+        response = stub.getRoute(UserRequest.newBuilder()
+            .setBody("hey")
+            .build());
+        System.out.println("shutting down");
+        channel.shutdown();
+        return response;
+    }
 }
