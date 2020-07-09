@@ -28,6 +28,6 @@ spec:
     spec:
       containers:
       - name: ng-app
-        image: us.gcr.io/naughty-nate-2020/frontend-hack:latest
+        image: us.gcr.io/naughty-nate-2020/frontend-hack:$GITHUB_SHA
         ports:
         - containerPort: 80

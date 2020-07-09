@@ -28,7 +28,7 @@ spec:
     spec:
       containers:
       - name: api-gateway
-        image: us.gcr.io/naughty-nate-2020/gateway-hack:latest
+        image: us.gcr.io/naughty-nate-2020/gateway-hack:$GITHUB_SHA
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
