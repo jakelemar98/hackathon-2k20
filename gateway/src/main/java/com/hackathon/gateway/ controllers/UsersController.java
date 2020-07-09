@@ -20,8 +20,9 @@ public class UsersController {
 	UsersClient uc = new UsersClient();
 
 
-	@GetMapping("/users/statistics")
+	@GetMapping("/users/stats")
 	public ResponseEntity<String> getStatistics() {
+		System.out.println("here");
 		UserResponse messageResponse = uc.userData();
 		String jsonString = serializeReturn(messageResponse);
         return new ResponseEntity<>(jsonString, HttpStatus.OK);

@@ -14,8 +14,8 @@ public class UsersClient {
     private UserResponse response;
 
     public UserResponse userData() {
-
-        final ManagedChannel channel = ManagedChannelBuilder.forAddress("users-service", 8000).usePlaintext().build();
+        String url = "users-service";
+        final ManagedChannel channel = ManagedChannelBuilder.forAddress(url, 8000).usePlaintext().build();
         final UserServiceGrpc.UserServiceBlockingStub stub = UserServiceGrpc.newBlockingStub(channel);
     
         response = stub.getUserData(UserRequest.newBuilder()
