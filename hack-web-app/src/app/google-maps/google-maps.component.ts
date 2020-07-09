@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-google-maps',
@@ -9,32 +9,31 @@ export class GoogleMapsComponent implements OnInit {
 
   constructor() { }
 
-  zoom = 12;
+  zoom = 15;
   center: google.maps.LatLngLiteral;
   options: google.maps.MapOptions = {
     mapTypeId: 'hybrid',
-    zoomControl: false,
-    scrollwheel: false,
-    disableDoubleClickZoom: true,
-    maxZoom: 15,
-    minZoom: 8,
+    zoomControl: true,
+    scrollwheel: true,
+    disableDoubleClickZoom: false,
+    maxZoom: 17,
+    minZoom: 10,
   };
 
+  @Input() markers: Array<google.maps.Marker>;
+
   ngOnInit(): void {
-    navigator.geolocation.getCurrentPosition(position => {
-      this.center = {
-        lat: position.coords.latitude,
-        lng: position.coords.longitude,
-      };
-    });
-  }
+    this.center = {
+      lat: 41.5868,
+      lng: -93.6250,
+    };
 
-  zoomIn() {
-    if (this.zoom < this.options.maxZoom) { this.zoom++; }
-  }
-
-  zoomOut() {
-    if (this.zoom > this.options.minZoom) { this.zoom--; }
+    // navigator.geolocation.getCurrentPosition(position => {
+    //   this.center = {
+    //     lat: position.coords.latitude,
+    //     lng: position.coords.longitude,
+    //   };
+    // });
   }
 
 }
