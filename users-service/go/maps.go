@@ -7,27 +7,15 @@ import (
 	"net/http"
 )
 
-type Body struct {
-	Location map[string]string `json:"location"`
-	OriginalIndex int `json:"originalIndex"`
-	PlaceId string `json:"placeId"`
-}
+// type Body struct {
+// 	Location map[string]string `json:"location"`
+// 	OriginalIndex int `json:"originalIndex"`
+// 	PlaceId string `json:"placeId"`
+// }
 
 type SnappedPoints struct {
 	Points []map[string]interface{}  `json:"snappedPoints"`
 }
-
-
-// type Watching struct {
-// 	ID     primitive.ObjectID `json:"id" bson:"_id"`
-// 	User   string             `json:"user" bson:"user"`
-// 	Stocks []string           `json:"stocks" bson:"stocks"`
-// }
-
-// type GlobalQuote struct {
-// 	Stock map[string]string `json:"Global Quote"`
-// }
-
 
 func getRoute(coordinates string) string {
 	log.Println("Retriving Route...")
