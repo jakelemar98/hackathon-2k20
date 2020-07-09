@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-google-maps',
@@ -20,15 +20,10 @@ export class GoogleMapsComponent implements OnInit {
     minZoom: 10,
   };
 
-  position: google.maps.LatLngLiteral;
+  @Input() markers: Array<google.maps.Marker>;
 
   ngOnInit(): void {
     this.center = {
-      lat: 41.5868,
-      lng: -93.6250,
-    };
-
-    this.position = {
       lat: 41.5868,
       lng: -93.6250,
     };

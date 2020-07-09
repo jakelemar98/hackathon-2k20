@@ -2,9 +2,9 @@
 
 
   <map-marker
-    [position]="position"
-    [label]="'Marker Label'"
-    [title]="'Maker Title'"
+    *ngFor="let marker of markers"
+    [position]="marker.getPosition()"
+    [title]="marker.getTitle()"
     [options]=""
   >
   </map-marker>
