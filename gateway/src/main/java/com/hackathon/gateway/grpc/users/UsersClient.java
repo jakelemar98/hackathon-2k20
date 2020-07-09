@@ -21,7 +21,7 @@ public class UsersClient {
         response = stub.getUserData(UserRequest.newBuilder()
             .setBody("hey")
             .build());
-        
+        System.out.println("shutting down");
         channel.shutdown();
         return response;
     }
