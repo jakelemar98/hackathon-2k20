@@ -9,6 +9,7 @@ import {UserService} from '../user.service';
 export class HomeComponent implements OnInit {
 
   constructor(private users: UserService) { }
+  response: any;
 
   markers: Array<google.maps.Marker>;
 
@@ -22,7 +23,12 @@ export class HomeComponent implements OnInit {
 
     this.users.getUserRoute().subscribe(
       data => {
-        console.log(data);
+        // console.log(data["body"]);
+        this.response = data["body"];
+
+        let json = JSON.parse(this.response)
+        console.log(json);
+        
 
         const latLng = {
           lat: 41.5868,
