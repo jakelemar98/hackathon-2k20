@@ -15,13 +15,13 @@ public class UsersClient {
 
     public UserResponse userData() {
 
-        final ManagedChannel channel = ManagedChannelBuilder.forAddress("127.0.0.1", 8000).usePlaintext().build();
+        final ManagedChannel channel = ManagedChannelBuilder.forAddress("users-service", 8000).usePlaintext().build();
         final UserServiceGrpc.UserServiceBlockingStub stub = UserServiceGrpc.newBlockingStub(channel);
     
         response = stub.getUserData(UserRequest.newBuilder()
             .setBody("hey")
             .build());
-        
+        System.out.println("shutting down");
         channel.shutdown();
         return response;
     }
