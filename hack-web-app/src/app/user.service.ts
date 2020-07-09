@@ -29,4 +29,8 @@ export class UserService {
   getUserStatistics() {
     return this.http.get(this.gatewayURL + 'statistics').pipe(catchError(UserService.handleError));
   }
+
+  getUserTripData() {
+    return this.http.get(this.gatewayURL + 'trip').pipe(catchError(UserService.handleError));
+  }
 }
