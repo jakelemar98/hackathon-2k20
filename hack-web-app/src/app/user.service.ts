@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpErrorResponse} from '@angular/common/http';
-import {Observable, throwError} from 'rxjs';
+import {throwError} from 'rxjs';
 import {catchError} from 'rxjs/operators';
 
 @Injectable({
@@ -13,10 +13,6 @@ export class UserService {
 
   gatewayURL = 'http://34.72.224.58/users/';
 
-  getUserStatistics() {
-    return this.http.get(this.gatewayURL + 'statistics').pipe(catchError(UserService.handleError));
-  }
-
   private static handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
       // A client-side or network error occurred. Handle it accordingly.
@@ -28,5 +24,9 @@ export class UserService {
     }
     // return an observable with a user-facing error message
     return throwError(`There seems to be a problem: ${error.error.body}`);
+  }
+
+  getUserStatistics() {
+    return this.http.get(this.gatewayURL + 'statistics').pipe(catchError(UserService.handleError));
   }
 }
