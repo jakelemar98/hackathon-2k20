@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { GoogleMapsComponent } from '../google-maps/google-maps.component';
 
 @Component({
   selector: 'app-home',
