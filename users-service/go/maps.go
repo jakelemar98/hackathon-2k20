@@ -14,24 +14,33 @@ import (
 // }
 
 type SnappedPoints struct {
-	Points []map[string]interface{}  `json:"snappedPoints"`
+	Points []map[string]interface{} `json:"snappedPoints"`
 }
 
-func getRoute(coordinates string) string {
+func getRoute() string {
+	content, err := ioutil.ReadFile("path2.txt")
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	// Convert []byte to string and print to screen
+	text := string(content)
+	return text
+}
+
+func getRoutes(coordinates string) string {
 	log.Println("Retriving Route...")
 	var returnVal string
+
 	url := apiBase + coordinates + "&interpolate=TRUE&key=" + apiKey
 	log.Println(url)
 	response, err := http.Get(url)
 	if err != nil {
-		return "null"
 		log.Fatalf("server error -> %s\n", err)
 	} else {
 		defer response.Body.Close()
 		data, _ := ioutil.ReadAll(response.Body)
-		log.Println(response.Body)
 		var r SnappedPoints
-		log.Println(r)
 		err = json.Unmarshal(data, &r)
 		if err != nil {
 			log.Println("Yeh theres an error")
@@ -39,7 +48,16 @@ func getRoute(coordinates string) string {
 		}
 
 		jsonString, _ := json.Marshal(r)
+		// content, err := ioutil.ReadFile("path2.txt")
+		// if err != nil {
+		// 	log.Fatal(err)
+		// }
+
+		// // Convert []byte to string and print to screen
+		//text := string(content)
+
 		returnVal = string(jsonString)
 	}
+
 	return returnVal
 }

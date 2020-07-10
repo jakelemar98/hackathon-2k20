@@ -16,6 +16,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatTableModule } from '@angular/material/table'
 import { GoogleMapsModule } from '@angular/google-maps';
 
 @NgModule({
@@ -37,7 +38,8 @@ import { GoogleMapsModule } from '@angular/google-maps';
     MatFormFieldModule,
     MatInputModule,
     GoogleMapsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]

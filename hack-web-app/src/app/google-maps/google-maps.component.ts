@@ -33,13 +33,10 @@ export class GoogleMapsComponent implements OnInit {
       lng: -93.6250,
     };
 
-    console.log(this.snappedPoints);
     if (this.snappedPoints) {
       let latLngLiteral: google.maps.LatLngLiteral;
 
-      console.log(this.snappedPoints['snappedPoints']);
       this.snappedPoints['snappedPoints'].forEach(point => {
-        console.log(point);
         latLngLiteral = {
           lat: point.location.latitude,
           lng: point.location.longitude
@@ -58,13 +55,6 @@ export class GoogleMapsComponent implements OnInit {
         }
       });
     }
-
-    // navigator.geolocation.getCurrentPosition(position => {
-    //   this.center = {
-    //     lat: position.coords.latitude,
-    //     lng: position.coords.longitude,
-    //   };
-    // });
   }
 
 }
