@@ -46,7 +46,6 @@ export class GoogleMapsComponent implements OnInit {
     // };
     // this.map = new google.maps.Map(this.mapElement.nativeElement, mapProperties);
 
-    console.log(this.snappedPoints);
     if (this.snappedPoints) {
       let latLngLiteral: google.maps.LatLngLiteral;
 
@@ -54,7 +53,6 @@ export class GoogleMapsComponent implements OnInit {
         {lat: null, lng: null}
       ];
 
-      console.log(this.snappedPoints['snappedPoints']);
       this.snappedPoints['snappedPoints'].forEach(point => {
         latLngLiteral = {
           lat: point.location.latitude,
@@ -85,7 +83,6 @@ export class GoogleMapsComponent implements OnInit {
 
       });
 
-      console.log(flightPathCoordinates);
       this.flightPath = new google.maps.Polyline({
         path: flightPathCoordinates,
         geodesic: true,

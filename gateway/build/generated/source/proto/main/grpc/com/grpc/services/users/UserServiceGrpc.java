@@ -92,35 +92,35 @@ public final class UserServiceGrpc {
   }
 
   private static volatile io.grpc.MethodDescriptor<com.grpc.services.users.UserRequest,
-      com.grpc.services.users.UserResponse> getGetMultipleRoutesMethod;
+      com.grpc.services.users.UserResponse> getGetRoutesMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "GetMultipleRoutes",
+      fullMethodName = SERVICE_NAME + '/' + "GetRoutes",
       requestType = com.grpc.services.users.UserRequest.class,
       responseType = com.grpc.services.users.UserResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
   public static io.grpc.MethodDescriptor<com.grpc.services.users.UserRequest,
-      com.grpc.services.users.UserResponse> getGetMultipleRoutesMethod() {
-    io.grpc.MethodDescriptor<com.grpc.services.users.UserRequest, com.grpc.services.users.UserResponse> getGetMultipleRoutesMethod;
-    if ((getGetMultipleRoutesMethod = UserServiceGrpc.getGetMultipleRoutesMethod) == null) {
+      com.grpc.services.users.UserResponse> getGetRoutesMethod() {
+    io.grpc.MethodDescriptor<com.grpc.services.users.UserRequest, com.grpc.services.users.UserResponse> getGetRoutesMethod;
+    if ((getGetRoutesMethod = UserServiceGrpc.getGetRoutesMethod) == null) {
       synchronized (UserServiceGrpc.class) {
-        if ((getGetMultipleRoutesMethod = UserServiceGrpc.getGetMultipleRoutesMethod) == null) {
-          UserServiceGrpc.getGetMultipleRoutesMethod = getGetMultipleRoutesMethod = 
+        if ((getGetRoutesMethod = UserServiceGrpc.getGetRoutesMethod) == null) {
+          UserServiceGrpc.getGetRoutesMethod = getGetRoutesMethod = 
               io.grpc.MethodDescriptor.<com.grpc.services.users.UserRequest, com.grpc.services.users.UserResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(
-                  "UserService", "GetMultipleRoutes"))
+                  "UserService", "GetRoutes"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   com.grpc.services.users.UserRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   com.grpc.services.users.UserResponse.getDefaultInstance()))
-                  .setSchemaDescriptor(new UserServiceMethodDescriptorSupplier("GetMultipleRoutes"))
+                  .setSchemaDescriptor(new UserServiceMethodDescriptorSupplier("GetRoutes"))
                   .build();
           }
         }
      }
-     return getGetMultipleRoutesMethod;
+     return getGetRoutesMethod;
   }
 
   /**
@@ -166,9 +166,9 @@ public final class UserServiceGrpc {
 
     /**
      */
-    public void getMultipleRoutes(com.grpc.services.users.UserRequest request,
+    public void getRoutes(com.grpc.services.users.UserRequest request,
         io.grpc.stub.StreamObserver<com.grpc.services.users.UserResponse> responseObserver) {
-      asyncUnimplementedUnaryCall(getGetMultipleRoutesMethod(), responseObserver);
+      asyncUnimplementedUnaryCall(getGetRoutesMethod(), responseObserver);
     }
 
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
@@ -188,12 +188,12 @@ public final class UserServiceGrpc {
                 com.grpc.services.users.UserResponse>(
                   this, METHODID_GET_ROUTE)))
           .addMethod(
-            getGetMultipleRoutesMethod(),
+            getGetRoutesMethod(),
             asyncUnaryCall(
               new MethodHandlers<
                 com.grpc.services.users.UserRequest,
                 com.grpc.services.users.UserResponse>(
-                  this, METHODID_GET_MULTIPLE_ROUTES)))
+                  this, METHODID_GET_ROUTES)))
           .build();
     }
   }
@@ -234,10 +234,10 @@ public final class UserServiceGrpc {
 
     /**
      */
-    public void getMultipleRoutes(com.grpc.services.users.UserRequest request,
+    public void getRoutes(com.grpc.services.users.UserRequest request,
         io.grpc.stub.StreamObserver<com.grpc.services.users.UserResponse> responseObserver) {
       asyncUnaryCall(
-          getChannel().newCall(getGetMultipleRoutesMethod(), getCallOptions()), request, responseObserver);
+          getChannel().newCall(getGetRoutesMethod(), getCallOptions()), request, responseObserver);
     }
   }
 
@@ -275,9 +275,9 @@ public final class UserServiceGrpc {
 
     /**
      */
-    public com.grpc.services.users.UserResponse getMultipleRoutes(com.grpc.services.users.UserRequest request) {
+    public com.grpc.services.users.UserResponse getRoutes(com.grpc.services.users.UserRequest request) {
       return blockingUnaryCall(
-          getChannel(), getGetMultipleRoutesMethod(), getCallOptions(), request);
+          getChannel(), getGetRoutesMethod(), getCallOptions(), request);
     }
   }
 
@@ -317,16 +317,16 @@ public final class UserServiceGrpc {
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<com.grpc.services.users.UserResponse> getMultipleRoutes(
+    public com.google.common.util.concurrent.ListenableFuture<com.grpc.services.users.UserResponse> getRoutes(
         com.grpc.services.users.UserRequest request) {
       return futureUnaryCall(
-          getChannel().newCall(getGetMultipleRoutesMethod(), getCallOptions()), request);
+          getChannel().newCall(getGetRoutesMethod(), getCallOptions()), request);
     }
   }
 
   private static final int METHODID_GET_USER_DATA = 0;
   private static final int METHODID_GET_ROUTE = 1;
-  private static final int METHODID_GET_MULTIPLE_ROUTES = 2;
+  private static final int METHODID_GET_ROUTES = 2;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -353,8 +353,8 @@ public final class UserServiceGrpc {
           serviceImpl.getRoute((com.grpc.services.users.UserRequest) request,
               (io.grpc.stub.StreamObserver<com.grpc.services.users.UserResponse>) responseObserver);
           break;
-        case METHODID_GET_MULTIPLE_ROUTES:
-          serviceImpl.getMultipleRoutes((com.grpc.services.users.UserRequest) request,
+        case METHODID_GET_ROUTES:
+          serviceImpl.getRoutes((com.grpc.services.users.UserRequest) request,
               (io.grpc.stub.StreamObserver<com.grpc.services.users.UserResponse>) responseObserver);
           break;
         default:
@@ -420,7 +420,7 @@ public final class UserServiceGrpc {
               .setSchemaDescriptor(new UserServiceFileDescriptorSupplier())
               .addMethod(getGetUserDataMethod())
               .addMethod(getGetRouteMethod())
-              .addMethod(getGetMultipleRoutesMethod())
+              .addMethod(getGetRoutesMethod())
               .build();
         }
       }

@@ -64,8 +64,8 @@ export class HomeComponent implements OnInit {
 
     this.users.getUserRoute().subscribe(
       data => {
-        // console.log(data["body"]);
-        this.snappedPoints = JSON.parse(data['body']) as SnappedPoints;
+        var res = JSON.parse(data["body"]);
+        this.snappedPoints = JSON.parse(res) as SnappedPoints;
         this.isLoaded = true;
       },
       error => console.error(error)
