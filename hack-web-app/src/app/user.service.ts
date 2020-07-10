@@ -33,4 +33,8 @@ export class UserService {
   getUserRoute() {
     return this.http.get(this.gatewayURL + 'route').pipe(catchError(UserService.handleError));
   }
+  
+  getMultipleRoutes() {
+    return this.http.get(this.gatewayURL + 'routes').pipe(catchError(UserService.handleError));
+  }
 }

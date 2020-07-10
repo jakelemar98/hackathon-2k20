@@ -64,13 +64,21 @@ export class HomeComponent implements OnInit {
 
     this.users.getUserRoute().subscribe(
       data => {0
-        console.log(data['body']);
+        var res = JSON.parse(data['body']);
         
-        this.snappedPoints = JSON.parse(data['body']) as Observable<SnappedPoints>;
+        this.snappedPoints = JSON.parse(res) as Observable<SnappedPoints>;
         this.isLoaded = true;
       },
       error => console.error(error)
     );
+
+    this.users.getMultipleRoutes().subscribe(
+      data => console.log(data),
+      error =>console.error(error)
+      
+      
+      
+    )
   }
 
 }
