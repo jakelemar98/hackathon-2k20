@@ -42,7 +42,7 @@ public class UsersClient {
         final ManagedChannel channel = ManagedChannelBuilder.forAddress(url, 8000).usePlaintext().build();
         final UserServiceGrpc.UserServiceBlockingStub stub = UserServiceGrpc.newBlockingStub(channel);
     
-        response = stub.getRoutes(UserRequest.newBuilder()
+        response = stub.getMultipleRoutes(UserRequest.newBuilder()
             .setBody("hey")
             .build());
         System.out.println("shutting down");

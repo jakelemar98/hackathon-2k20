@@ -37,8 +37,8 @@ public class UsersController {
 
 	@GetMapping("/users/routes")
 	public ResponseEntity<String> getRoutes() {
-		// UserResponse messageResponse = uc.getRoutes();
-		// String jsonString = serializeReturn(messageResponse);
+		UserResponse messageResponse = uc.getRoutes();
+		String jsonString = serializeReturn(messageResponse);
         return new ResponseEntity<>("hey", HttpStatus.OK);
 	}
 
