@@ -8,6 +8,7 @@ import { ToolbarComponent } from './shared/components/toolbar/toolbar.component'
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { GoogleMapsComponent } from './google-maps/google-maps.component';
+import { LineChartComponent } from './line-chart/line-chart.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
@@ -25,7 +26,8 @@ import { GoogleMapsModule } from '@angular/google-maps';
     ToolbarComponent,
     LoginComponent,
     HomeComponent,
-    GoogleMapsComponent
+    GoogleMapsComponent,
+    LineChartComponent
   ],
   imports: [
     BrowserModule,
