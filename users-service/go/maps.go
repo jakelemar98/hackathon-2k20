@@ -30,34 +30,13 @@ func getRoute() string {
 
 func getRoutes(coordinates string) string {
 	log.Println("Retriving Route...")
-	var returnVal string
-
-	url := apiBase + coordinates + "&interpolate=TRUE&key=" + apiKey
-	log.Println(url)
-	response, err := http.Get(url)
+	content, err := ioutil.ReadFile("path3.txt")
 	if err != nil {
-		log.Fatalf("server error -> %s\n", err)
-	} else {
-		defer response.Body.Close()
-		data, _ := ioutil.ReadAll(response.Body)
-		var r SnappedPoints
-		err = json.Unmarshal(data, &r)
-		if err != nil {
-			log.Println("Yeh theres an error")
-			log.Fatal(err)
-		}
-
-		jsonString, _ := json.Marshal(r)
-		// content, err := ioutil.ReadFile("path2.txt")
-		// if err != nil {
-		// 	log.Fatal(err)
-		// }
-
-		// // Convert []byte to string and print to screen
-		//text := string(content)
-
-		returnVal = string(jsonString)
+		log.Fatal(err)
 	}
 
-	return returnVal
+	// Convert []byte to string and print to screen
+	text := string(content)
+
+	return text
 }
