@@ -1,13 +1,23 @@
-<google-map height="50rem" width="50rem" [zoom]="zoom" [center]="center" [options]="options">
-
+<google-map
+  height="50rem"
+  width="50rem"
+  [zoom]="zoom"
+  [center]="center"
+  [options]="options"
+  >
+<!--<google-map #map-->
+<!--  height="50rem"-->
+<!--  width="50rem"-->
+<!--&gt;-->
 
   <map-marker
     *ngFor="let marker of markers"
     [position]="marker.getPosition()"
     [title]="marker.getTitle()"
-    [options]=""
   >
   </map-marker>
+
+  <map-polyline #polyline></map-polyline>
 
 
 </google-map>

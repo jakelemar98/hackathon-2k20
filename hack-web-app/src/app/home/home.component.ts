@@ -52,7 +52,7 @@ export class HomeComponent implements OnInit {
   response: any;
 
   isLoaded: boolean = false;
-  snappedPoints: Observable<SnappedPoints>;
+  snappedPoints: SnappedPoints;
 
   ngOnInit(): void {
     this.users.getUserStatistics().subscribe(
@@ -63,10 +63,9 @@ export class HomeComponent implements OnInit {
     );
 
     this.users.getUserRoute().subscribe(
-      data => {0
-        var res = JSON.parse(data['body']);
-        
-        this.snappedPoints = JSON.parse(res) as Observable<SnappedPoints>;
+      data => {
+        // console.log(data["body"]);
+        this.snappedPoints = JSON.parse(data['body']) as SnappedPoints;
         this.isLoaded = true;
       },
       error => console.error(error)
@@ -75,9 +74,9 @@ export class HomeComponent implements OnInit {
     this.users.getMultipleRoutes().subscribe(
       data => console.log(data),
       error =>console.error(error)
-      
-      
-      
+
+
+
     )
   }
 
