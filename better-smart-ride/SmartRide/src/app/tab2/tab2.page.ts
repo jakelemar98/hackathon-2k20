@@ -1,4 +1,8 @@
 import { Component } from '@angular/core';
+import { GoogleMaps, GoogleMapsEvent, LatLng, MarkerOptions, Marker, GoogleMapOptions} from '@ionic-native/google-maps';
+import { Platform } from '@ionic/angular';
+import {MatListModule} from '@angular/material/list';
+
 
 @Component({
   selector: 'app-tab2',
@@ -7,33 +11,33 @@ import { Component } from '@angular/core';
 })
 export class Tab2Page {
 
-  constructor() {}
+  constructor(public platform: Platform) {}
 
-  // zoom = 12;
-  // center: google.maps.LatLngLiteral;
-  // options: google.maps.MapOptions = {
-  //   mapTypeId: 'hybrid',
-  //   zoomControl: false,
-  //   scrollwheel: false,
-  //   disableDoubleClickZoom: true,
-  //   maxZoom: 15,
-  //   minZoom: 8,
-  // };
 
-  // ngOnInit(): void {
-  //   navigator.geolocation.getCurrentPosition(position => {
-  //     this.center = {
-  //       lat: position.coords.latitude,
-  //       lng: position.coords.longitude,
-  //     };
-  //   });
-  // }
 
-  // zoomIn() {
-  //   if (this.zoom < this.options.maxZoom) { this.zoom++; }
-  // }
+  ngAfterViewInit() {
+    this.platform.ready().then(() => this.loadMap());
+  }
 
-  // zoomOut() {
-  //   if (this.zoom > this.options.minZoom) { this.zoom--; }
-  // }
+  loadMap() {
+    const map = GoogleMaps.create('map');
+
+    map.one( GoogleMapsEvent.MAP_READY ).then((data: any) => {
+			const coordinates: LatLng = new LatLng(-93.618197, 41.590213);
+
+      //map.setMyLocationEnabled;
+      map.setCameraTarget(new LatLng(41.590213, -93.618197));
+      let mapOptions: GoogleMapOptions = {
+        camera: {
+           target: {
+             lat: 41.590213,
+             lng: -93.618197
+           },
+           zoom: 10,
+           tilt: 30
+         }
+      };
+		
+		});
+  }
 }
