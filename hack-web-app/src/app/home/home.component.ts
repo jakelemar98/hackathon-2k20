@@ -2,6 +2,21 @@ import { Component, OnInit } from '@angular/core';
 import {UserService} from '../user.service';
 import {Observable} from 'rxjs';
 
+export interface Location {
+  latitude: number;
+  longitude: number;
+}
+
+export interface SnappedPoint {
+  location: Location;
+  originalIndex: number;
+  placeId: string;
+}
+
+export interface SnappedPoints {
+  snappedPoints: SnappedPoint[];
+}
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -12,7 +27,8 @@ export class HomeComponent implements OnInit {
   constructor(private users: UserService) { }
   response: any;
 
-  snappedPoints$: Observable<object>;
+  isLoaded: boolean = false;
+  snappedPoints: Observable<SnappedPoints>;
 
   ngOnInit(): void {
     this.users.getUserStatistics().subscribe(
@@ -25,10 +41,8 @@ export class HomeComponent implements OnInit {
     this.users.getUserRoute().subscribe(
       data => {
         // console.log(data["body"]);
-        this.response = data['body'];
-
-        this.snappedPoints$ = JSON.parse(this.response);
-        console.log(this.snappedPoints$);
+        this.snappedPoints = JSON.parse(data['body']) as Observable<SnappedPoints>;
+        this.isLoaded = true;
       },
       error => console.error(error)
     );
