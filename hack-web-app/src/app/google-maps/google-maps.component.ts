@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, Optional} from '@angular/core';
 import {SnappedPoints} from '../shared/models/snapped-points.model';
 import {UserService} from '../user.service';
 
@@ -11,10 +11,10 @@ export class GoogleMapsComponent implements OnInit {
 
   constructor(private users: UserService) { }
 
-  @Input() snappedPoints: SnappedPoints[];
+  @Optional() @Input() snappedPoints: object;
+  @Optional() @Input() center: google.maps.LatLngLiteral;
 
   zoom = 15;
-  center: google.maps.LatLngLiteral;
   options: google.maps.MapOptions = {
     mapTypeId: 'hybrid',
     zoomControl: true,
@@ -33,32 +33,31 @@ export class GoogleMapsComponent implements OnInit {
       lng: -93.6250,
     };
 
-    this.users.getCommute().subscribe(
-      data => {
+    console.log(this.snappedPoints);
+    if (this.snappedPoints) {
+      let latLngLiteral: google.maps.LatLngLiteral;
 
-        let latLngLiteral: google.maps.LatLngLiteral;
+      console.log(this.snappedPoints['snappedPoints']);
+      this.snappedPoints['snappedPoints'].forEach(point => {
+        console.log(point);
+        latLngLiteral = {
+          lat: point.location.latitude,
+          lng: point.location.longitude
+        };
 
-        data['snappedPoints'].forEach(point => {
-          latLngLiteral = {
-            lat: point.location.latitude,
-            lng: point.location.longitude
-          };
+        this.markers.push(new google.maps.Marker({
+          position: latLngLiteral,
+          title: point.placeId
+        }));
 
-          this.markers.push(new google.maps.Marker({
+        if (point.originalIndex) {
+          this.originalMarkers.push(new google.maps.Marker({
             position: latLngLiteral,
             title: point.placeId
           }));
-
-          if (point.originalIndex) {
-            this.originalMarkers.push(new google.maps.Marker({
-              position: latLngLiteral,
-              title: point.placeId
-            }));
-          }
-        });
-      },
-      error => console.error(error)
-    );
+        }
+      });
+    }
 
     // navigator.geolocation.getCurrentPosition(position => {
     //   this.center = {

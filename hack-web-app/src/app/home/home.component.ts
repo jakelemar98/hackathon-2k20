@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {UserService} from '../user.service';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -10,6 +11,8 @@ export class HomeComponent implements OnInit {
 
   constructor(private users: UserService) { }
   response: any;
+
+  snappedPoints$: Observable<object>;
 
   ngOnInit(): void {
     this.users.getUserStatistics().subscribe(
@@ -22,24 +25,21 @@ export class HomeComponent implements OnInit {
     this.users.getUserRoute().subscribe(
       data => {
         // console.log(data["body"]);
-        this.response = data["body"];
+        this.response = data['body'];
 
-        let json = JSON.parse(this.response)
-        console.log(json);
-
-
-        const latLng = {
-          lat: 41.5868,
-          lng: -93.6250,
-        };
-
-        this.markers.push(new google.maps.Marker({
-          position: latLng,
-          title: 'Marker'
-        }));
+        this.snappedPoints$ = JSON.parse(this.response);
+        console.log(this.snappedPoints$);
       },
       error => console.error(error)
     );
+
+    // this.users.getCommute().subscribe(
+    //   data => {
+    //     console.log(data);
+    //     this.snappedPoints = data;
+    //   },
+    //   error => console.error(error)
+    // );
 
   }
 

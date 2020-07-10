@@ -1,1 +1,5 @@
-<app-google-maps></app-google-maps>
+<div *ngIf="snappedPoints$ | async as snappedPoints; else loading">
+  <app-google-maps [snappedPoints]="snappedPoints"></app-google-maps>
+</div>
+<ng-template #loading>Loading Map Data...</ng-template>
+
