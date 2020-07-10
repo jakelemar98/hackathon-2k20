@@ -9,16 +9,53 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
+  <br>
+  <h1 style="text-align:center;">
+    Driving Statistics
+  </h1>
   <ion-card>
     <div>
-      <div style="display: block; padding: 15px;">
-        <canvas baseChart
-                [datasets]="barChartData"
-                [labels]="barChartLabels"
-                [options]="barChartOptions"
-                [legend]="barChartLegend"
-                [chartType]="barChartType">
-        </canvas>
+      <div style="padding: 15px;">
+        <canvas
+      baseChart
+      [chartType]="'line'"
+      [datasets]="chartData"
+      [labels]="chartLabels"
+      [options]="chartOptions"
+      [legend]="true"
+      (chartClick)="onChartClick($event)">
+  </canvas>
+      </div>
+    </div>
+  </ion-card>
+  <ion-card>
+    <div>
+      <div style="padding: 15px;">
+        <canvas
+      baseChart
+      [chartType]="'bar'"
+      [datasets]="chart2Data"
+      [labels]="chart2Labels"
+      [options]="chart2Options"
+      [legend]="true"
+      (chartClick)="onChartClick($event)">
+  </canvas>
+      </div>
+    </div>
+  </ion-card>
+
+  <ion-card>
+    <div>
+      <div style="padding: 15px;">
+        <canvas
+      baseChart
+      [chartType]="'line'"
+      [datasets]="chart3Data"
+      [labels]="chart3Labels"
+      [options]="chart3Options"
+      [legend]="true"
+      (chartClick)="onChartClick($event)">
+  </canvas>
       </div>
     </div>
   </ion-card>

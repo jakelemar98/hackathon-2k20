@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
-import { ChartsModule } from 'ng2-charts';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { ChartsModule, Label, Color } from 'ng2-charts';
+import { ChartDataSets, ChartOptions } from 'chart.js';
+
 
 
 @Component({
@@ -9,18 +11,34 @@ import { ChartsModule } from 'ng2-charts';
 })
 export class HistoryPage {
 
-  constructor() {}
-
-  public barChartOptions = {
-    scaleShowVerticalLines: false,
+  chartOptions = {
     responsive: true
   };
-  public barChartLabels = ['2006', '2007', '2008', '2009', '2010', '2011', '2012'];
-  public barChartType = 'bar';
-  public barChartLegend = true;
-  public barChartData = [
-    {data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A'},
-    {data: [28, 48, 40, 19, 86, 27, 90], label: 'Series B'}
-  ];
+  chartData = [
+    { data: [67, 68, 74, 78, 82, 76, 89], label: 'Overall Driving Grade' },
 
+  ];
+  chartLabels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
+
+  chart2Options = {
+    responsive: true
+  };
+  chart2Data = [
+    { data: [110, 99, 87, 76, 81, 75, 74], label: 'Number of hard breaks' },
+
+  ];
+  chart2Labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
+
+  chart3Options = {
+    responsive: true
+  };
+  chart3Data = [
+    { data: [129, 120, 119, 117, 118, 116, 115], label: 'Premium Cost' },
+
+  ];
+  chart3Labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
+
+  constructor() {}
+
+  ngOnInit(){}
 }
